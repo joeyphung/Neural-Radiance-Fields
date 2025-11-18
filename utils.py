@@ -31,7 +31,8 @@ def load_img(path, cv_type, to_float, display, shrink, size=1000):
 def display_img(img, bgr=True):
 
     # Ensure the image is in uint8's so that cvtColor works
-    img = float64_to_uint8(img)
+    if img.dtype != np.uint8:
+        img = float64_to_uint8(img)
 
     # If the image is not grayscale then convert it to RGBA
     if img.ndim == 3: 
